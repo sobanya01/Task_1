@@ -3,6 +3,7 @@ from unittest.mock import Mock
 from classes.bun import Bun
 from classes.ingredient import Ingredient
 from classes.ingredient_types import *
+from helpers import *
 import random as r
 
 
@@ -16,30 +17,12 @@ def dummy_bun():
 
 @pytest.fixture
 def dummy_ingredient():
-    m = Mock()
-    m.get_name.return_value = f"dummy_name_{r.randint(0, 10)}"
-    m.get_price.return_value = 1
-    m.get_type.return_value = "dummy_type"
-    return m
+    return create_dummy_ingredient_mock()
 
 
 @pytest.fixture
 def three_dummy_ingredients():
-    one = Mock()
-    one.get_name.return_value = f"dummy_name_{r.randint(0, 10)}"
-    one.get_price.return_value = 1
-    one.get_type.return_value = "dummy_type"
-
-    two = Mock()
-    two.get_name.return_value = f"dummy_name_{r.randint(0, 10)}"
-    two.get_price.return_value = 1
-    two.get_type.return_value = "dummy_type"
-
-    three = Mock()
-    three.get_name.return_value = f"dummy_name_{r.randint(0, 10)}"
-    three.get_price.return_value = 1
-    three.get_type.return_value = "dummy_type"
-    return [one, two, three]
+    return [create_dummy_ingredient_mock(), create_dummy_ingredient_mock(), create_dummy_ingredient_mock()]
 
 
 @pytest.fixture
